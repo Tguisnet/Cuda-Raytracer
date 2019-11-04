@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ $# -gt 1 ]; then
+    ARCH=$1
+else
+    ARCH=sm_35
+fi
+
+mkdir -p cmake-build && cd cmake-build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_CUDA_FLAGS="-arch=$ARCH --use_fast_math -Xptxas -O3"
